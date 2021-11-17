@@ -30,8 +30,8 @@ import matplotlib.pyplot as plt
 
 
 # Матрица для 100 городов
-N=100
-A = np.loadtxt("100.txt").reshape(100, 100)
+N=50
+A = np.loadtxt("50.txt").reshape(50, 50)
 # print(A)
 
 # TestData
@@ -333,8 +333,8 @@ def crossingover(path_x, path_y):
 
 # Все вместе на больших данных
 print('Генетический алгоритм')
-x = convert_list_to_str(random.sample(range(1, 101), 100))
-y = convert_list_to_str(random.sample(range(1, 101), 100))
+x = convert_list_to_str(random.sample(range(1, 51), 50))
+y = convert_list_to_str(random.sample(range(1, 51), 50))
 itr = 0
 bestpath = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 bestcost = 999999
@@ -356,10 +356,10 @@ while itr < 1000000:
     elif ycost < bestcost and ycost < xcost and ycost < newcost:
         bestpath = ypath
         bestcost = ycost
-    x = convert_list_to_str(mutation(convert_str_to_list(x)))
-    y = convert_list_to_str(mutation(convert_str_to_list(y)))
-    # x = convert_list_to_str(mutation_d(convert_str_to_list(x), itr))
-    # y = convert_list_to_str(mutation_d(convert_str_to_list(y), itr))
+    # x = convert_list_to_str(mutation(convert_str_to_list(x)))
+    # y = convert_list_to_str(mutation(convert_str_to_list(y)))
+    x = convert_list_to_str(mutation_d(convert_str_to_list(x), itr))
+    y = convert_list_to_str(mutation_d(convert_str_to_list(y), itr))
     xaxis.append(itr)
     yaxis.append(bestcost)
     itr += 1
